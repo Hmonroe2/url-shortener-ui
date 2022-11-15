@@ -20,7 +20,7 @@ class UrlForm extends Component {
     if (this.state.title === ' ' || this.state.urlToShorten === '') {
       return alert('Please fill all parts of the form')
     } else {
-      this.props.postUrl(this.state.urlToShorten, this.state.title)
+      this.props.postUrl(this.state)
       this.clearInputs();
     }
   }

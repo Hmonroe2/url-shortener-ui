@@ -5,13 +5,13 @@ export const getUrls = () => {
 
 
 
-export const postData = (url , title) => {
+export const postData = (data) => {
   const requestData = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      long_url: url, 
-      title: title
+      long_url: data.urlToShorten, 
+      title: data.title
     }),
   };
 
