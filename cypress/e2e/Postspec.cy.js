@@ -1,18 +1,14 @@
 describe('Posts', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'http://localhost:3001/api/v1/urls',
-      {
+    cy.intercept('GET', 'http://localhost:3001/api/v1/urls', {
       fixture: 'urls.json',
-      })
-      .as('urls');
-    cy.intercept('POST', 'http://localhost:3001/api/v1/urls',
-      {
+    }).as('urls');
+    cy.intercept('POST', 'http://localhost:3001/api/v1/urls', {
       fixture: 'responseUrl.json',
-      })
-      .as('postData');
+    }).as('postData');
     cy.visit('http://localhost:3000/');
   });
-  it('fill out and submit the form and the new shortened URL is rendered', () => {
+  it('As a user, I should fill out and submit the form and the new shortened URL is rendered', () => {
     cy.get('[placeholder="Title..."]').type('Hunters url');
     cy.get('[placeholder="Title..."]').should('have.value', 'Hunters url');
     cy.get('[placeholder="URL to Shorten..."]').type('www.lost.com');
