@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class UrlForm extends Component {
   constructor(props) {
-    console.log(props.postUrl)
     super();
     this.props = props;
     this.state = {
