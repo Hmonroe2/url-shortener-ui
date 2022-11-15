@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class UrlForm extends Component {
   constructor(props) {
+    console.log(props.postUrl)
     super();
     this.props = props;
     this.state = {
@@ -16,8 +17,14 @@ class UrlForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.clearInputs();
+    if (this.state.title === ' ' || this.state.urlToShorten === '') {
+      return alert('Please fill all parts of the form')
+    } else {
+      this.props.postUrl(this.state.urlToShorten, this.state.title)
+      this.clearInputs();
+    }
   }
+
 
   clearInputs = () => {
     this.setState({title: '', urlToShorten: ''});
@@ -31,14 +38,15 @@ class UrlForm extends Component {
           placeholder='Title...'
           name='title'
           value={this.state.title}
+          required={true}
           onChange={e => this.handleNameChange(e)}
         />
 
         <input
           type='text'
           placeholder='URL to Shorten...'
-          name='title'
-          value={this.state.title}
+          name='urlToShorten'
+          value={this.state.urlToShorten}
           onChange={e => this.handleNameChange(e)}
         />
 
